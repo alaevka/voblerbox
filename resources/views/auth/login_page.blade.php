@@ -13,7 +13,7 @@
 	            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 	            <!-- ./ csrf token -->
 	            
-	            <div class="{{$errors->has('phone') ? 'has-error':''}}">
+	            <div class="form-group {{$errors->has('phone') ? 'has-error':''}}">
 	                <input class="form-control" tabindex="1" placeholder="Номер мобильного телефона" type="text" name="phone" id="phone" value="{{ Input::old('phone') }}"> 
 	                {!!$errors->first('phone', '<span class="help-block error-input">:message </span>')!!}
 	            </div>

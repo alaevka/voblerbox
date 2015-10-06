@@ -13,17 +13,17 @@
 	            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 	            <!-- ./ csrf token -->
 
-	            <div class="{{$errors->has('firstname') ? 'has-error':''}}">
+	            <div class="form-group {{$errors->has('firstname') ? 'has-error':''}}">
 	                <input class="form-control" tabindex="1" placeholder="Ваше имя" type="text" name="firstname" id="firstname" value="{{ Input::old('firstname') }}"> 
 	                {!!$errors->first('firstname', '<span class="help-block error-input">:message </span>')!!}
 	            </div>
 
-	            <div class="{{$errors->has('lastname') ? 'has-error':''}}">
+	            <div class="form-group {{$errors->has('lastname') ? 'has-error':''}}">
 	                <input class="form-control" tabindex="1" placeholder="Ваша фамилия" type="text" name="lastname" id="lastname" value="{{ Input::old('lastname') }}"> 
 	                {!!$errors->first('lastname', '<span class="help-block error-input">:message </span>')!!}
 	            </div>
 
-	            <div class="{{$errors->has('phone') ? 'has-error':''}}">
+	            <div class="form-group {{$errors->has('phone') ? 'has-error':''}}">
 	                <input class="form-control" tabindex="1" placeholder="Номер мобильного телефона" type="text" name="phone" id="phone" value="{{ Input::old('phone') }}"> 
 	                {!!$errors->first('phone', '<span class="help-block error-input">:message </span>')!!}
 	            </div>

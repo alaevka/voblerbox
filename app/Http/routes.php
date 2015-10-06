@@ -38,3 +38,23 @@ Route::get('/logout', [
 Route::get('/trade', [
     'as' => 'trade', 'uses' => 'SteamController@steamTrade'
 ]);
+
+Route::get('/addbox', [
+    'uses' => 'SiteController@addBox'
+]);
+
+Route::get('/addbalance/{id}/{value}', [
+    'as' => 'addbalance', 'uses' => 'SiteController@addBalance'
+]);
+
+Route::get('/addlures/{id}', [
+    'as' => 'addrandomlures', 'uses' => 'SiteController@addRandomLures'
+]);
+
+Route::get('/box/{id}', [
+    'as' => 'box', 'uses' => 'BoxController@getBox'
+]);
+
+Route::post('/roulette', [
+    'as' => 'roulette', 'uses' => 'BoxController@postRoulette'
+]);

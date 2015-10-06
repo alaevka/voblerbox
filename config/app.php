@@ -148,6 +148,7 @@ return [
         Invisnik\LaravelSteamAuth\SteamServiceProvider::class,
         Jenssegers\Mongodb\MongodbServiceProvider::class,
         Propaganistas\LaravelPhone\LaravelPhoneServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
