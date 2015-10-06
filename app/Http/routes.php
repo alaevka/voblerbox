@@ -27,34 +27,36 @@ Route::get('/registration', [
 Route::post('/registration', [
     'as' => 'registration', 'uses' => 'Auth\AuthController@postRegistration'
 ]);
-Route::get('/steamlogin', [
-    'as' => 'steamlogin', 'uses' => 'SteamController@getLogin'
-]);
 
-Route::get('/logout', [
-    'as' => 'logout', 'uses' => 'SteamController@getLogout'
-]);
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/logout', [
+        'as' => 'logout', 'uses' => 'SteamController@getLogout'
+    ]);
+    Route::get('/profile', [
+        'as' => 'profile', 'uses' => 'Auth\AuthController@getProfile'
+    ]);
+    Route::get('/trade', [
+        'as' => 'trade', 'uses' => 'SteamController@steamTrade'
+    ]);
 
-Route::get('/trade', [
-    'as' => 'trade', 'uses' => 'SteamController@steamTrade'
-]);
+    Route::get('/addbox', [
+        'uses' => 'SiteController@addBox'
+    ]);
 
-Route::get('/addbox', [
-    'uses' => 'SiteController@addBox'
-]);
+    Route::get('/addbalance/{id}/{value}', [
+        'as' => 'addbalance', 'uses' => 'SiteController@addBalance'
+    ]);
 
-Route::get('/addbalance/{id}/{value}', [
-    'as' => 'addbalance', 'uses' => 'SiteController@addBalance'
-]);
+    Route::get('/addlures/{id}', [
+        'as' => 'addrandomlures', 'uses' => 'SiteController@addRandomLures'
+    ]);
 
-Route::get('/addlures/{id}', [
-    'as' => 'addrandomlures', 'uses' => 'SiteController@addRandomLures'
-]);
+    Route::get('/box/{id}', [
+        'as' => 'box', 'uses' => 'BoxController@getBox'
+    ]);
 
-Route::get('/box/{id}', [
-    'as' => 'box', 'uses' => 'BoxController@getBox'
-]);
+    Route::post('/roulette', [
+        'as' => 'roulette', 'uses' => 'BoxController@postRoulette'
+    ]);
+});
 
-Route::post('/roulette', [
-    'as' => 'roulette', 'uses' => 'BoxController@postRoulette'
-]);

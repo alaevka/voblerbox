@@ -30,7 +30,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('guest', ['except' => ['getLogout', 'getProfile']]);
     }
 
     public function getLogin() {
@@ -93,8 +93,14 @@ class AuthController extends Controller
         \Log::info('<!> Created : '.$user);
         //send password via sms
         $phone_formatted = '7'.str_replace(['(', ')', ' ', '-'], '', $user->phone);
-        $body=file_get_contents("http://sms.ru/sms/send?api_id=1408895e-223f-25e4-75b1-7c25b1caf620&to=".$phone_formatted."&text=".urlencode("Привет! Твой пароль для входа: ".$generated_password));
+        $body=file_get_contents("http://sms.ru/sms/send?api_id=1408895e-223f-25e4-75b1-7c25b1caf620&from=79273818046&to=".$phone_formatted."&text=".urlencode("Привет! Твой пароль для входа: ".$generated_password));
         \Auth::login($user);
         return redirect('/');
+    }
+
+    public function getProfile() {
+        
+        return view('auth.profile_page');
+
     }
 }

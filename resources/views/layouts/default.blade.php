@@ -34,6 +34,9 @@
                 height:194px;
                 margin:auto;
             }
+            .how-to {
+
+            }
         </style>
     </head>
     <body>
@@ -54,7 +57,7 @@
 	     	<ul class="nav navbar-nav navbar-right">
             @if (Auth::check())
               <li><a href="{{ route('addbalance', ['id' => Auth::user()->_id, 'value' => 100]) }}">Ваш баланс: <font id="user-balance">{{ Auth::user()->getBalance() }}</font> (пополнить на 100 рублей)</a></li>
-              <li><a href="">8 {{ Auth::user()->phone }}</a></li>
+              <li><a href="{{ route('profile') }}">8 {{ Auth::user()->phone }} настройки</a></li>
               <li><a href="{{ route('logout') }}">выйти</a></li>
             @else
               <li><a href="{{ route('login') }}">войти</a></li>
