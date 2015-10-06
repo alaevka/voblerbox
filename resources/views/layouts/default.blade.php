@@ -97,9 +97,9 @@
       $(function(){
           // initialize!
           var option = {
-              speed : 10,
+              speed : 10, 
               duration : 1,
-              stopImageNumber : 3,
+              stopImageNumber : 4,
               startCallback : function() {
                   console.log('start');
               },
