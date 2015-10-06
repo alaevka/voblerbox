@@ -35,6 +35,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [
         'as' => 'profile', 'uses' => 'Auth\AuthController@getProfile'
     ]);
+    Route::post('/profile/settings', [
+        'as' => 'profile/settings', 'uses' => 'Auth\AuthController@postSettings'
+    ]);
     Route::get('/trade', [
         'as' => 'trade', 'uses' => 'SteamController@steamTrade'
     ]);

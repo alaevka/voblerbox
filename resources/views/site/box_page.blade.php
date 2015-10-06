@@ -35,7 +35,7 @@
 		    		У вас не достаточно баланса, для открытия коробки! <a href="{{ route('addbalance', ['id' => Auth::user()->_id, 'value' => 100]) }}">пополнить баланс на 100 рублей</a>
 		    	@else
 		    		@if (count($box_lures) > 0)
-				    	<button class="btn btn-primary" id="start-roulette" style="margin: 20px 0;">Мне повезет!</button><br>
+				    	<button class="btn btn-primary" id="start-roulette" style="margin: 20px 0;">Открыть коробку!</button><br>
 				    	Нажимая на кнопку, Вы соглашаетесь с тем, что с вашего баланса спишется сумма, указанная в стоимости коробки! 
 				    @else
 

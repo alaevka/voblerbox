@@ -37,6 +37,9 @@
             .how-to {
 
             }
+            .profile-legend {
+              margin-top: 20px;
+            }
         </style>
     </head>
     <body>
