@@ -103,9 +103,8 @@
       $(function(){
           // initialize!
           var option = {
-              speed : 10, 
+              speed : 40, 
               duration : 1,
-              stopImageNumber : 4,
               startCallback : function() {
                   console.log('start');
               },
@@ -116,7 +115,7 @@
                   console.log('stop');
                   //show 
                   //cheack balance and show button or not show :)
-                  $("#start-roulette").html('Попробовать еще раз!').prop('disabled', false);
+                  //$("#start-roulette").html('Попробовать еще раз!').prop('disabled', false);
               }
           }
           $('div.roulette').roulette(option); 
@@ -140,10 +139,18 @@
                 data: "box_id="+box_id+"&_token="+token,
                 success: function(data,status){
 
+                    var option = {
+                      
+                        stopImageNumber : data.win_position,
+                      
+                    }
+                   
+                    $('div.roulette').roulette('start', option);
+
                 }
               });
 
-              $('div.roulette').roulette('start');
+              
               return false;   
           });
 
