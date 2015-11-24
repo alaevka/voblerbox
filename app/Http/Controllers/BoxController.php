@@ -34,11 +34,14 @@ class BoxController extends Controller {
 	        //calculate new user balance
 	        if(Auth::user()->getBalance() < $box->price) {
 	        	$show_roulette_button = false;
+	        	$route_update_balance = route('addbalance', ['id' => Auth::user()->_id, 'value' => 100]);
+	        	$balance_line = "У вас не достаточно баланса, для открытия коробки! <a href=".$route_update_balance.">пополнить баланс на 100 рублей</a>";
 	        } else {
 	        	$show_roulette_button = true;
+	        	$balance_line = null;
 	        }
 
-	        return response()->json(['win_position' => $win_position, 'show_roulette_button' => $show_roulette_button]);
+	        return response()->json(['balance_line' => $balance_line, 'win_position' => $win_position, 'show_roulette_button' => $show_roulette_button]);
 	    } else {
 	    	abort(400);
 	    }

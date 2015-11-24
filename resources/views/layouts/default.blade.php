@@ -105,24 +105,12 @@
           var option = {
               speed : 40, 
               duration : 1,
-              startCallback : function() {
-                  console.log('start');
-              },
-              slowDownCallback : function() {
-                  console.log('slowDown');
-              },
-              stopCallback : function($stopElm) {
-                  console.log('stop');
-                  //show 
-                  //cheack balance and show button or not show :)
-                  //$("#start-roulette").html('Попробовать еще раз!').prop('disabled', false);
-              }
           }
           $('div.roulette').roulette(option); 
 
           // START!
           $('#start-roulette').click(function(){
-              $("#start-roulette").prop('disabled', true);
+              
               //money back
               var box_price = $("#current-box-price").val();
               var box_id = $("#current-box-id").val();
@@ -140,8 +128,17 @@
                 success: function(data,status){
 
                     var option = {
-                      
+                        
                         stopImageNumber : data.win_position,
+                        startCallback : function() { $("#start-roulette").prop('disabled', true); },
+                        stopCallback : function($stopElm) { 
+                            if(data.show_roulette_button) {
+                                $("#start-roulette").prop('disabled', false); 
+                            } else {
+                                //view update user balance paragraph
+                                $(".balance-line").html(data.balance_line);
+                            }
+                        },
                       
                     }
                    

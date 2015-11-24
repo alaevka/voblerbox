@@ -140,7 +140,8 @@
 			}
 			//p.stopImageNumber = $.isNumeric(defaultProperty.originalStopImageNumber) && Number(defaultProperty.originalStopImageNumber) >= 0 ?
 			//						Number(defaultProperty.originalStopImageNumber) : Math.floor(Math.random() * p.imageCount); 
-			p.startCallback();
+			p.startCallback = option.startCallback();
+			p.stopCallback = option.stopCallback;
 			roll();
 			setTimeout(function(){
 				slowDownSetup();

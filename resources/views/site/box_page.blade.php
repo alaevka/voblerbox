@@ -30,7 +30,7 @@
 		    	<input type="hidden" id="current-box-price" value="{{ $box->price }}">
 		    	<input type="hidden" id="current-box-id" value="{{ $box->_id }}">
 		    </div>	
-		    <div>
+		    <div class="balance-line">
 		    	@if(Auth::user()->getBalance() < $box->price)
 		    		У вас не достаточно баланса, для открытия коробки! <a href="{{ route('addbalance', ['id' => Auth::user()->_id, 'value' => 100]) }}">пополнить баланс на 100 рублей</a>
 		    	@else
