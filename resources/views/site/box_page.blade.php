@@ -51,9 +51,9 @@
 		@foreach ($box_lures as $lure)
 		<div class="col-lg-2 col-md-2 col-xs-4 lure-thumb">
 			<img class="img-responsive" src="/images/vobler.jpg">
-			<!-- <div class="text-center">
+			<div class="text-center">
 		    	{{ $lure->_id }}
-		    </div> -->
+		    </div>
 		    <div class="text-center">
 		    	{{ $lure->title }}
 		    </div>

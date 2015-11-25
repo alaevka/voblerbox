@@ -31,6 +31,16 @@ class BoxController extends Controller {
 
 	        //generate win item position
 	        $win_position = $this->_generateWinPosition($box);
+
+	        //store it
+	        $orders = new \App\Models\Orders;
+	        $orders->user_id = Auth::user()->_id;
+	        $orders->box_id = $box->_id;
+	        $orders->lure_id = '56142a8e4c2e9872da0041a9';
+	        $orders->balance_id = $balance->_id;
+	        $orders->save();
+
+
 	        //calculate new user balance
 	        if(Auth::user()->getBalance() < $box->price) {
 	        	$show_roulette_button = false;

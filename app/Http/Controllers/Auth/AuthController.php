@@ -100,7 +100,11 @@ class AuthController extends Controller
 
     public function getProfile() {
         
-        return view('auth.profile_page');
+        $orders = \App\Models\Orders::where('user_id', '=', \Auth::user()->_id)->get();
+
+        return view('auth.profile_page', [
+            'orders' => $orders
+        ]);
 
     }
 }

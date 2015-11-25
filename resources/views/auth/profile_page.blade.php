@@ -48,7 +48,22 @@
 
 			    	<legend class="profile-legend">Адрес доставки</legend>
 			    </div>
-			    <div role="tabpanel" class="tab-pane" id="box_history">box_history</div>
+			    <div role="tabpanel" class="tab-pane" id="box_history">
+			    	@if (count($orders) > 0)
+						@foreach ($orders as $order)
+						<div>
+							
+						   id коробки: {{ $order->box_id }} - {{ $order->box->title }}, что попалось: {{ $order->lure->title }} - {{ $order->created_at }}
+						    	
+						</div>
+						@endforeach
+						@else
+							<div class="col-md-12 text-center">
+								<h3>Вы не открыли пока ни одной коробки.</h3>
+							</div>
+						    
+					@endif
+			    </div>
 			    <div role="tabpanel" class="tab-pane" id="sales">sales</div>
 			    <div role="tabpanel" class="tab-pane" id="balance_history">balance_history</div>
 			    <div role="tabpanel" class="tab-pane" id="balance_replenish">balance_replenish</div>
